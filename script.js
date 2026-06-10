@@ -19,3 +19,22 @@ console.log("NodeList:", answerBtnsNodeList)
 // getElementsByClassName returns an HTMLCollection
 // querySelectorAll returns a NodeList
 // To use .map() on either, convert with Array.from()
+
+
+
+
+// Phase 2: Read and Modify the DOM
+gameTitle.textContent = "⚡ Quick Fire Trivia"
+
+console.log("First question:", questionText.textContent)
+
+questionNumber.textContent = questionNumber.textContent.toUpperCase()
+
+const firstBtn = answerBtnsNodeList[0]
+const firstLi = firstBtn.parentElement
+
+console.log("The first button:", firstBtn)
+console.log("Its parent <li>:", firstLi)
+console.log("The <ul> that holds all buttons:", firstLi.parentElement)
+
+questionCard.classList.add("answered")
