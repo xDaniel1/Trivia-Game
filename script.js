@@ -1,3 +1,35 @@
+// Phase 3: Question Data
+const questions = [
+  {
+    text: "Who invented the World Wide Web?",
+    answers: ["Tim Berners-Lee", "Bill Gates", "Linus Torvalds", "Ada Lovelace"],
+    correct: 0
+  },
+  {
+    text: "What does CPU stand for?",
+    answers: ["Central Processing Unit", "Computer Personal Unit", "Central Program Utility", "Core Processing Unit"],
+    correct: 0
+  },
+  {
+    text: "Which language runs in a web browser?",
+    answers: ["Java", "C++", "JavaScript", "Python"],
+    correct: 2
+  },
+  {
+    text: "What does HTML stand for?",
+    answers: ["Hyper Text Markup Language", "High Tech Modern Language", "Hyper Transfer Markup Logic", "Home Tool Markup Language"],
+    correct: 0
+  },
+  {
+    text: "Which company created the JavaScript language?",
+    answers: ["Microsoft", "Google", "Netscape", "Apple"],
+    correct: 2
+  }
+]
+
+let currentIndex = 0
+let score = 0
+
 // Phase 1: Select DOM Elements
 const gameTitle = document.getElementById("game-title")
 const scoreDisplay = document.getElementById("score")
@@ -38,3 +70,19 @@ console.log("Its parent <li>:", firstLi)
 console.log("The <ul> that holds all buttons:", firstLi.parentElement)
 
 questionCard.classList.add("answered")
+
+function loadQuestion(index) {
+    const current = questions[index]
+
+    questionNumber.textContent = current.text
+
+    Array.from(answerBtnsNodeList).forEach((btn, i) => {
+        btn.textContent = current.answers[i]
+        btn.className = "answer-btn"
+    })
+
+    nextBtn.classList.add("hidden")
+    questionCard.classList.remove("answered")
+}
+
+loadQuestion(0)
