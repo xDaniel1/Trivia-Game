@@ -86,3 +86,28 @@ function loadQuestion(index) {
 }
 
 loadQuestion(0)
+
+//Phase: 4
+
+answerList.addEventListener("click", (event) => {
+    if (event.target.tagName !=="Button") return
+
+    const clicked = event.target
+    const clickedIndex = question[currentIndex].correct
+
+    if (clickedIndex === correctIndex) {
+        clicked.classList.add("correct")
+        score++
+        scoreDisplay.textContent = score
+    } else {
+        clicked.classlist.add("wrong")
+        answerBtnNodeList[correctIndex].classList.add("correct")
+    }
+
+    Array.from(answerBtnsNodeList).forEach(btn => {
+        btn.classList.add("disabled")
+    })
+
+    questionCard.classList.add("answered")
+    nextBtn.classList.remove("hidden")
+})
