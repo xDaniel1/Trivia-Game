@@ -127,8 +127,24 @@ nextBtn.addEventListener("click", () => {
       // For no more questions - show the end screen
       questionCard.classList.add("hidden")
       endScreen.classList.remove("hidden")
-      endScreen.textContent = 'Game Over! Final Score : ${score} / {$questions.length}'
+      endScreen.textContent = `Game Over! Final Score: ${score} / ${questions.length}`
     }
+})
+
+//Phase 6: Restart via Event Delegation
+endScreen.addEventListener("click", (event) => {
+   if (event.target.id !== "restart-btn") return
+
+   score = 0
+   currentIndex = 0
+   scoreDisplay.textContent = score
+
+   endScreen.innerHTML = ""
+   endScreen.classList.add("hidden")
+
+   questionCard.classList.remove("hidden")
+
+   loadQuestion(currentIndex)
 })
  
 // Why does clicking a button inside #answer-list trigger this listener?
