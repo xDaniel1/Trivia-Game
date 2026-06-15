@@ -116,6 +116,20 @@ answerList.addEventListener("click", (event) => {
     questionCard.classList.add("answered")
     nextBtn.classList.remove("hidden")
 })
+
+//Phase 5: Next Question Button
+nextBtn.addEventListener("click", () => {
+    currentIndex++
+
+    if (currentIndex < questions.length) {
+      loadQuestion(currentIndex)
+    } else {
+      // For no more questions - show the end screen
+      questionCard.classList.add("hidden")
+      endScreen.classList.remove("hidden")
+      endScreen.textContent = 'Game Over! Final Score : ${score} / {$questions.length}'
+    }
+})
  
 // Why does clicking a button inside #answer-list trigger this listener?
 // Answer: Because click events bubble up from the button to the parent #answer-list
