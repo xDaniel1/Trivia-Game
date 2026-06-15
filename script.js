@@ -26,10 +26,10 @@ const questions = [
     correct: 2
   }
 ]
-
+ 
 let currentIndex = 0
 let score = 0
-
+ 
 // Phase 1: Select DOM Elements
 const gameTitle = document.getElementById("game-title")
 const scoreDisplay = document.getElementById("score")
@@ -39,75 +39,88 @@ const questionCard = document.getElementById("question-card")
 const answerList = document.getElementById("answer-list")
 const nextBtn = document.getElementById("next-btn")
 const endScreen = document.getElementById("end-screen")
-
+ 
 // Two ways to grab the answer buttons
 const answerBtnsCollection = document.getElementsByClassName("answer-btn")
 const answerBtnsNodeList = document.querySelectorAll(".answer-btn")
-
+ 
 // Log both to compare in DevTools
 console.log("HTMLCollection:", answerBtnsCollection)
 console.log("NodeList:", answerBtnsNodeList)
-
+ 
 // getElementsByClassName returns an HTMLCollection
 // querySelectorAll returns a NodeList
 // To use .map() on either, convert with Array.from()
-
-
-
-
+ 
+ 
 // Phase 2: Read and Modify the DOM
 gameTitle.textContent = "⚡ Quick Fire Trivia"
-
+ 
 console.log("First question:", questionText.textContent)
-
-questionNumber.textContent = questionNumber.textContent.toUpperCase()
-
+ 
 const firstBtn = answerBtnsNodeList[0]
 const firstLi = firstBtn.parentElement
-
+ 
 console.log("The first button:", firstBtn)
 console.log("Its parent <li>:", firstLi)
 console.log("The <ul> that holds all buttons:", firstLi.parentElement)
-
-questionCard.classList.add("answered")
-
+ 
+ 
+// Phase 3: Load Question
 function loadQuestion(index) {
     const current = questions[index]
-
-    questionNumber.textContent = current.text
-
+ 
+    questionNumber.textContent = `Question ${index + 1} of ${questions.length}`
+    questionText.textContent = current.text
+ 
     Array.from(answerBtnsNodeList).forEach((btn, i) => {
         btn.textContent = current.answers[i]
         btn.className = "answer-btn"
     })
-
+ 
     nextBtn.classList.add("hidden")
     questionCard.classList.remove("answered")
 }
-
+ 
 loadQuestion(0)
-
-//Phase: 4
-
+ 
+ 
+// Phase 4: Event Delegation on Answer List
 answerList.addEventListener("click", (event) => {
-    if (event.target.tagName !=="Button") return
-
+    // If click wasn't on a button, do nothing
+    if (event.target.tagName !== "BUTTON") return
+ 
+    // Which button was clicked and what index is it
     const clicked = event.target
-    const clickedIndex = question[currentIndex].correct
-
+    const clickedIndex = Array.from(answerBtnsNodeList).indexOf(clicked)
+ 
+    // Get correct answer index from current question
+    const correctIndex = questions[currentIndex].correct
+ 
+    // Was the player right or wrong?
     if (clickedIndex === correctIndex) {
         clicked.classList.add("correct")
         score++
         scoreDisplay.textContent = score
     } else {
-        clicked.classlist.add("wrong")
-        answerBtnNodeList[correctIndex].classList.add("correct")
+        clicked.classList.add("wrong")
+        answerBtnsNodeList[correctIndex].classList.add("correct")
     }
-
+ 
+    // Disable all buttons so player can't change answer
     Array.from(answerBtnsNodeList).forEach(btn => {
         btn.classList.add("disabled")
     })
-
+ 
+    // Show next button and mark card as answered
     questionCard.classList.add("answered")
     nextBtn.classList.remove("hidden")
 })
+ 
+// Why does clicking a button inside #answer-list trigger this listener?
+// Answer: Because click events bubble up from the button to the parent #answer-list
+ 
+// What is the difference between event.target and event.currentTarget here?
+// event.target → the actual button that was clicked
+// event.currentTarget → always #answer-list, the element with the listener
+ 
