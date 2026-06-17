@@ -1,30 +1,20 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: Arial, sans-serif;
     background-color: #1a1a2e;
-    color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
+    color: white;
+    text-align: center;
+    padding: 40px;
 }
 
 #game {
-    width: 100%;
     max-width: 600px;
+    margin: 0 auto;
 }
 
 header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 #game-title {
@@ -32,43 +22,36 @@ header {
     color: #e94560;
 }
 
-#score-display {
-    font-size: 18px;
-    font-weight: bold;
-}
-
 #question-card {
     background-color: #16213e;
-    border-radius: 12px;
-    padding: 32px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    padding: 30px;
 }
 
 #question-number {
-    font-size: 13px;
+    font-size: 14px;
     color: #90a4ae;
-    margin-bottom: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    margin-bottom: 10px;
 }
 
 #question-text {
-    font-size: 22px;
-    margin-bottom: 24px;
-    line-height: 1.4;
+    font-size: 20px;
+    margin-bottom: 20px;
 }
 
 #answer-list {
     list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 24px;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+#answer-list li {
+    margin-bottom: 10px;
 }
 
 .answer-btn {
     width: 100%;
-    padding: 14px 20px;
+    padding: 12px;
     background-color: #0f3460;
     color: white;
     border: 2px solid #1a4a7a;
@@ -76,68 +59,43 @@ header {
     font-size: 16px;
     cursor: pointer;
     text-align: left;
-    transition:
-        background-color 0.2s,
-        border-color 0.2s;
 }
 
 .answer-btn:hover {
     background-color: #1a4a7a;
-    border-color: #e94560;
 }
 
-.answer-btn:focus {
-    outline: 2px solid #e94560;
-    outline-offset: 2px;
-}
-
-/* JavaScript will apply these during the game */
 .correct {
-    background-color: #4caf50;
-    color: white;
-    border-color: #388e3c;
+    background-color: green;
 }
 
 .wrong {
-    background-color: #e53935;
-    color: white;
-    border-color: #c62828;
+    background-color: red;
 }
 
 .disabled {
-    opacity: 0.5;
+    opacity: 0.6;
     pointer-events: none;
-    cursor: default;
-}
-
-.answered {
-    border-left: 4px solid #90a4ae;
 }
 
 .hidden {
     display: none;
 }
 
-#next-btn {
-    width: 100%;
-    padding: 14px;
+#next-btn,
+#restart-btn {
+    padding: 12px 20px;
     background-color: #e94560;
     color: white;
     border: none;
     border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-#next-btn:hover {
-    background-color: #c73652;
+    margin-top: 10px;
 }
 
 #end-screen {
     background-color: #16213e;
-    border-radius: 12px;
+    border-radius: 10px;
     padding: 40px;
-    text-align: center;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
