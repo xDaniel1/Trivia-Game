@@ -3,7 +3,7 @@ const questions = [
   {
     text: "Who invented the World Wide Web?",
     answers: [
-      "Tim Berners-Lee",
+      "Tim Berners Lee",
       "Bill Gates",
       "Linus Torvalds",
       "Ada Lovelace",
