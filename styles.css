@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #1a1a2e;
-    color: white;
+    background-color: lightgray;
+    color: black;
     text-align: center;
     padding: 40px;
 }
@@ -19,18 +19,18 @@ header {
 
 #game-title {
     font-size: 24px;
-    color: #e94560;
+    color: black;
 }
 
 #question-card {
-    background-color: #16213e;
+    background-color: white;
     border-radius: 10px;
     padding: 30px;
 }
 
 #question-number {
     font-size: 14px;
-    color: #90a4ae;
+    color: gray;
     margin-bottom: 10px;
 }
 
@@ -52,9 +52,9 @@ header {
 .answer-btn {
     width: 100%;
     padding: 12px;
-    background-color: #0f3460;
-    color: white;
-    border: 2px solid #1a4a7a;
+    background-color: lightgray;
+    color: black;
+    border: 2px solid black;
     border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
@@ -62,15 +62,17 @@ header {
 }
 
 .answer-btn:hover {
-    background-color: #1a4a7a;
+    background-color: white;
 }
 
 .correct {
     background-color: green;
+    color: white;
 }
 
 .wrong {
     background-color: red;
+    color: white;
 }
 
 .disabled {
@@ -85,7 +87,7 @@ header {
 #next-btn,
 #restart-btn {
     padding: 12px 20px;
-    background-color: #e94560;
+    background-color: black;
     color: white;
     border: none;
     border-radius: 8px;
@@ -95,7 +97,7 @@ header {
 }
 
 #end-screen {
-    background-color: #16213e;
+    background-color: white;
     border-radius: 10px;
     padding: 40px;
 }
